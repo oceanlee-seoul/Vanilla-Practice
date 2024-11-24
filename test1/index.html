@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dropdown</title>
+    <style>
+      button {
+        border: none;
+        background: transparent;
+      }
+      .dropdown {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+      }
+      .dropdown-btn {
+        border: 1px solid black;
+        width: 300px;
+      }
+      .wrapper {
+        position: absolute;
+        top: 30px;
+        width: 300px;
+        display: none;
+        flex-direction: column;
+        border: 1px solid black;
+        text-align: left;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="dropdown">
+      <button class="dropdown-btn">아이템을 선택해 주세요.</button>
+      <div class="wrapper">
+        <button>item 1</button>
+        <button>item 2</button>
+        <button>item 3</button>
+        <button>item 4</button>
+      </div>
+    </div>
+  </body>
+  <script>
+    const dropdownToggle = document.querySelector('.dropdown-btn');
+    const dropdownWrapper = document.querySelector('.wrapper');
+
+    let isOpen = false;
+    dropdownToggle.addEventListener('click', () => {
+      isOpen = isOpen ? false : true;
+      dropdownWrapper.style.display = isOpen ? 'flex' : 'none';
+    });
+  </script>
+</html>
