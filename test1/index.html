@@ -17,6 +17,7 @@
       .dropdown-btn {
         border: 1px solid black;
         width: 300px;
+        cursor: pointer;
       }
       .wrapper {
         position: absolute;
@@ -26,6 +27,11 @@
         flex-direction: column;
         border: 1px solid black;
         text-align: left;
+        gap: 5px;
+      }
+      .item {
+        cursor: pointer;
+        margin: 5px 0 5px 0;
       }
     </style>
   </head>
@@ -33,21 +39,34 @@
     <div class="dropdown">
       <button class="dropdown-btn">아이템을 선택해 주세요.</button>
       <div class="wrapper">
-        <button>item 1</button>
-        <button>item 2</button>
-        <button>item 3</button>
-        <button>item 4</button>
+        <button class="item">item 1</button>
+        <button class="item">item 2</button>
+        <button class="item">item 3</button>
+        <button class="item">item 4</button>
       </div>
     </div>
   </body>
   <script>
     const dropdownToggle = document.querySelector('.dropdown-btn');
     const dropdownWrapper = document.querySelector('.wrapper');
+    const dropdownItems = document.querySelectorAll('.item');
 
     let isOpen = false;
-    dropdownToggle.addEventListener('click', () => {
+
+    const toggleDropdown = () => {
       isOpen = isOpen ? false : true;
       dropdownWrapper.style.display = isOpen ? 'flex' : 'none';
+    };
+
+    dropdownToggle.addEventListener('click', () => {
+      toggleDropdown();
     });
+
+    for (const item of dropdownItems) {
+      item.addEventListener('click', () => {
+        dropdownToggle.innerText = item.innerText;
+        toggleDropdown();
+      });
+    }
   </script>
 </html>
