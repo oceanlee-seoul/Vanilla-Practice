@@ -1,0 +1,77 @@
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.card {
+  height: 100%;
+  border: 1px solid black;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.imgWrapper {
+  position: relative;
+  padding-bottom: 56.25%;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.imgWrapper img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: blur(5px);
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+.imgWrapper img:hover {
+  transform: scale(1.1);
+}
+
+.imgWrapper img.checked {
+  filter: none;
+}
+
+.imgWrapper img.clicked {
+  transform: scale(2);
+}
+
+.imgWrapper input[type='checkbox'] {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+
+.textWrapper {
+  padding: 16px;
+}
+
+.textWrapper h2 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 0;
+}
+
+.textWrapper p {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+@media (min-width: 769px) {
+  .container {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
