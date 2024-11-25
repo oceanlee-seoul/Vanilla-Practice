@@ -4,69 +4,44 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dropdown</title>
-    <style>
-      button {
-        border: none;
-        background: transparent;
-      }
-      .dropdown {
-        display: flex;
-        flex-direction: column;
-        position: relative;
-      }
-      .dropdown-btn {
-        border: 1px solid black;
-        width: 300px;
-        cursor: pointer;
-      }
-      .wrapper {
-        position: absolute;
-        top: 30px;
-        width: 300px;
-        display: none;
-        flex-direction: column;
-        border: 1px solid black;
-        text-align: left;
-        gap: 5px;
-      }
-      .item {
-        cursor: pointer;
-        margin: 5px 0 5px 0;
-      }
-    </style>
+    <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
-    <div class="dropdown">
-      <button class="dropdown-btn">아이템을 선택해 주세요.</button>
-      <div class="wrapper">
-        <button class="item">item 1</button>
-        <button class="item">item 2</button>
-        <button class="item">item 3</button>
-        <button class="item">item 4</button>
+    <div class="box">
+      <div class="dropdown">
+        <button
+          type="button"
+          class="dropdown-btn"
+          aria-expanded="false"
+          aria-controls="dropdown-menu-1"
+        >
+          아이템을 선택해 주세요.
+        </button>
+        <div id="dropdown-menu-1" class="wrapper" role="menu">
+          <button class="item" role="menuitem">item 1</button>
+          <button class="item" role="menuitem">item 2</button>
+          <button class="item" role="menuitem">item 3</button>
+          <button class="item" role="menuitem">item 4</button>
+        </div>
+      </div>
+
+      <div class="dropdown">
+        <button
+          type="button"
+          class="dropdown-btn"
+          aria-expanded="false"
+          aria-controls="dropdown-menu-2"
+        >
+          아이템을 선택해 주세요.
+        </button>
+        <div id="dropdown-menu-2" class="wrapper">
+          <button class="item" role="menuitem">item A</button>
+          <button class="item" role="menuitem">item B</button>
+          <button class="item" role="menuitem">item C</button>
+          <button class="item" role="menuitem">item D</button>
+        </div>
       </div>
     </div>
   </body>
-  <script>
-    const dropdownToggle = document.querySelector('.dropdown-btn');
-    const dropdownWrapper = document.querySelector('.wrapper');
-    const dropdownItems = document.querySelectorAll('.item');
-
-    let isOpen = false;
-
-    const toggleDropdown = () => {
-      isOpen = isOpen ? false : true;
-      dropdownWrapper.style.display = isOpen ? 'flex' : 'none';
-    };
-
-    dropdownToggle.addEventListener('click', () => {
-      toggleDropdown();
-    });
-
-    for (const item of dropdownItems) {
-      item.addEventListener('click', () => {
-        dropdownToggle.innerText = item.innerText;
-        toggleDropdown();
-      });
-    }
-  </script>
+  <script src="./dropdown.js" defer></script>
 </html>
