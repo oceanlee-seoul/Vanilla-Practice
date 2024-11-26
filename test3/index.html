@@ -3,36 +3,37 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Emoji Matching Game</title>
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
-    <div id="wrapper" class="wrapper"></div>
+    <div class="container">
+      <h1>카드 맞추기</h1>
+      <span class="timer" id="timer">00:00</span>
+      <div id="cardWrapper" class="cardWrapper"></div>
+      <button id="startButton">시작하기</button>
+    </div>
 
     <script>
-      const wrapper = document.querySelector('#wrapper');
+      const wrapper = document.querySelector('#cardWrapper');
+      const startButton = document.querySelector('#startButton');
+      const timerDisplay = document.querySelector('#timer');
 
       const total = 16;
-      const colors = [
-        'rgb(255, 0, 0)', // red
-        'rgb(0, 0, 255)', // blue
-        'rgb(0, 128, 0)', // green
-        'rgb(255, 255, 0)', // yellow
-        'rgb(128, 0, 128)', // purple
-        'rgb(255, 165, 0)', // orange
-        'rgb(255, 192, 203)', // pink
-        'rgb(0, 255, 255)', // cyan
-      ];
-      let colorCopy = colors.concat(colors);
+      const emojis = ['😄', '🐶', '🌸', '⭐', '🍎', '🎵', '🚗', '🎲'];
+      let emojiCopy = emojis.concat(emojis);
+
       let shuffled = [];
       let clicked = [];
       let completed = [];
       let clickable;
+      let timer;
+      let elapsedSeconds = 0;
 
       function shuffle() {
-        for (let i = 0; colorCopy.length > 0; i += 1) {
-          const randomIndex = Math.floor(Math.random() * colorCopy.length);
-          shuffled = shuffled.concat(colorCopy.splice(randomIndex, 1));
+        for (let i = 0; emojiCopy.length > 0; i += 1) {
+          const randomIndex = Math.floor(Math.random() * emojiCopy.length);
+          shuffled = shuffled.concat(emojiCopy.splice(randomIndex, 1));
         }
       }
 
@@ -45,7 +46,10 @@
         cardFront.className = 'card-front';
         const cardBack = document.createElement('div');
         cardBack.className = 'card-back';
-        cardBack.style.backgroundColor = shuffled[i];
+        const emoji = document.createElement('p');
+        emoji.className = 'emoji';
+        emoji.textContent = shuffled[i];
+        cardBack.appendChild(emoji);
         cardInner.appendChild(cardFront);
         cardInner.appendChild(cardBack);
         card.appendChild(cardInner);
@@ -55,19 +59,26 @@
       function onClickCard(event) {
         if (!clickable) return;
         const card = event.target.closest('.card');
+        if (card.classList.contains('flipped')) return;
         card.classList.toggle('flipped');
         clicked.push(card);
         if (clicked.length !== 2) {
           return;
         }
         clickable = false;
-        const firstBackColor =
-          clicked[0].querySelector('.card-back').style.backgroundColor;
-        const secondBackColor =
-          clicked[1].querySelector('.card-back').style.backgroundColor;
-        if (firstBackColor === secondBackColor) {
+
+        const firstEmoji = clicked[0].querySelector('.card-back p').textContent;
+        const secondEmoji =
+          clicked[1].querySelector('.card-back p').textContent;
+
+        if (firstEmoji === secondEmoji) {
           completed.push(...clicked.splice(0, 2));
           clickable = true;
+
+          if (completed.length === total) {
+            clearInterval(timer);
+            timer = 0;
+          }
           return;
         }
         setTimeout(() => {
@@ -78,7 +89,21 @@
         }, 1000);
       }
 
-      function startGame() {
+      function resetGame() {
+        clearInterval(timer);
+        timer = null;
+        timerDisplay.textContent = '00:00';
+        elapsedSeconds = 0;
+        clickable = false;
+        clicked = [];
+        completed = [];
+        wrapper.innerHTML = '';
+        cardSetting();
+        startButton.textContent = '다시하기';
+        startGame();
+      }
+
+      function cardSetting() {
         clickable = false;
         shuffle();
         for (let i = 0; i < total; i++) {
@@ -88,22 +113,63 @@
           });
           wrapper.appendChild(card);
         }
+      }
 
-        document.querySelectorAll('.card').forEach((card, index) => {
-          setTimeout(() => {
-            card.classList.add('flipped');
-          }, 1000 + 100 * index);
+      async function flipAndStartGame() {
+        // 1. 카드들을 1초 간격으로 뒤집기
+        await new Promise((resolve) => {
+          document.querySelectorAll('.card').forEach((card, index) => {
+            setTimeout(() => {
+              card.classList.add('flipped');
+              if (index === document.querySelectorAll('.card').length - 1) {
+                resolve(); // 마지막 카드까지 뒤집었으면 resolve 호출
+              }
+            }, 1000 + 100 * index);
+          });
         });
 
+        // 2. 5초 후에 카드들의 flipped 클래스를 제거하고 타이머 시작
         setTimeout(() => {
+          if (timer) clearInterval(timer);
           document.querySelectorAll('.card').forEach((card) => {
             card.classList.remove('flipped');
           });
           clickable = true;
-        }, 5000);
+
+          startTimer();
+        }, 3000);
       }
 
-      startGame();
+      function startGame() {
+        clickable = false;
+        flipAndStartGame(); // 비동기적으로 처리되는 부분
+      }
+
+      function startTimer() {
+        elapsedSeconds = 0;
+        timerDisplay.textContent = '00:00';
+
+        timer = setInterval(() => {
+          elapsedSeconds += 1;
+          const minutes = String(Math.floor(elapsedSeconds / 60)).padStart(
+            2,
+            '0'
+          );
+          const seconds = String(elapsedSeconds % 60).padStart(2, '0');
+          timerDisplay.textContent = `${minutes}:${seconds}`;
+        }, 1000);
+      }
+
+      cardSetting();
+
+      startButton.addEventListener('click', () => {
+        if (startButton.textContent === '시작하기') {
+          startGame();
+          startButton.textContent = '다시하기';
+        } else {
+          resetGame();
+        }
+      });
     </script>
   </body>
 </html>

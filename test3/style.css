@@ -1,15 +1,41 @@
-.wrapper {
+body {
+  background-color: #f5f5f7;
+}
+
+h1 {
+  margin: 0;
+  padding-top: 30px;
+}
+
+button {
+  background-color: white;
+  padding: 16px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+}
+.cardWrapper {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 30px;
+  width: calc(140px * 4 + 30px * 3); /* 카드 4개 + 간격 3개 */
+  height: calc(140px * 4 + 30px * 3); /* 카드 4개 + 간격 3개 */
+  margin: 0 auto; /* 중앙 정렬 */
 }
 
 .card {
-  display: inline-block;
-  margin-right: 20px;
-  margin-bottom: 20px;
-  width: 70px;
-  height: 100px;
-  perspective: 140px;
+  width: 140px;
+  height: 140px;
+  perspective: 350px;
   cursor: pointer;
 }
 
@@ -27,7 +53,58 @@
 }
 
 .card-front {
-  background: navy;
+  background-color: #e5e5f7;
+  opacity: 0.8;
+  background-image: linear-gradient(
+      30deg,
+      #444cf7 12%,
+      transparent 12.5%,
+      transparent 87%,
+      #444cf7 87.5%,
+      #444cf7
+    ),
+    linear-gradient(
+      150deg,
+      #444cf7 12%,
+      transparent 12.5%,
+      transparent 87%,
+      #444cf7 87.5%,
+      #444cf7
+    ),
+    linear-gradient(
+      30deg,
+      #444cf7 12%,
+      transparent 12.5%,
+      transparent 87%,
+      #444cf7 87.5%,
+      #444cf7
+    ),
+    linear-gradient(
+      150deg,
+      #444cf7 12%,
+      transparent 12.5%,
+      transparent 87%,
+      #444cf7 87.5%,
+      #444cf7
+    ),
+    linear-gradient(
+      60deg,
+      #444cf777 25%,
+      transparent 25.5%,
+      transparent 75%,
+      #444cf777 75%,
+      #444cf777
+    ),
+    linear-gradient(
+      60deg,
+      #444cf777 25%,
+      transparent 25.5%,
+      transparent 75%,
+      #444cf777 75%,
+      #444cf777
+    );
+  background-size: 20px 35px;
+  background-position: 0 0, 0 0, 10px 18px, 10px 18px, 0 0, 10px 18px;
 }
 
 .card-front,
@@ -35,8 +112,16 @@
   position: absolute;
   width: 100%;
   height: 100%;
-  border: 1px solid black;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border-radius: 8px;
   backface-visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.emoji {
+  font-size: 70px;
 }
 
 .card-back {
