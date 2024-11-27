@@ -2,11 +2,6 @@ body {
   background-color: #f5f5f7;
 }
 
-h1 {
-  margin: 0;
-  padding-top: 30px;
-}
-
 button {
   background-color: white;
   padding: 16px;
@@ -16,25 +11,44 @@ button {
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
+.controller {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 90%;
+  margin-bottom: 10px;
+}
+
+.timer {
+  font-weight: 300;
+  font-size: 50px;
+  color: #999999;
+}
+
 .container {
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 50px;
 }
+
 .cardWrapper {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  gap: 30px;
-  width: calc(140px * 4 + 30px * 3); /* 카드 4개 + 간격 3개 */
-  height: calc(140px * 4 + 30px * 3); /* 카드 4개 + 간격 3개 */
-  margin: 0 auto; /* 중앙 정렬 */
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  width: 90%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
 }
 
 .card {
-  width: 140px;
-  height: 140px;
+  aspect-ratio: 1/1;
+  width: 100%;
   perspective: 350px;
   cursor: pointer;
 }
