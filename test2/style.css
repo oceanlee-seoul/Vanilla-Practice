@@ -1,12 +1,19 @@
+@import url('../global.css');
+
+body {
+  background-color: var(--background-color);
+}
+
 .container {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 24px;
+  padding: 20px;
 }
 
 .card {
   height: 100%;
-  border: 1px solid black;
+  box-shadow: var(--box-shadow);
   border-radius: 8px;
   overflow: hidden;
 }
@@ -52,6 +59,7 @@
 
 .textWrapper {
   padding: 16px;
+  background-color: white;
 }
 
 .textWrapper h2 {
@@ -59,9 +67,11 @@
   overflow: hidden;
   text-overflow: ellipsis;
   margin: 0;
+  color: var(--primary-color);
 }
 
 .textWrapper p {
+  color: #999999;
   overflow: hidden;
   text-overflow: ellipsis;
   margin: 0;
