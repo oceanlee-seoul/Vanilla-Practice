@@ -1,0 +1,59 @@
+@import url('../global.css');
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background-color: var(--background-color);
+}
+
+.btnWrapper {
+  margin-bottom: 20px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 800px;
+  width: 80%;
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: var(--box-shadow);
+  gap: 15px;
+  width: 80%;
+  padding: 20px;
+}
+
+button {
+  background-color: #444df7bf;
+  color: white;
+  width: 125px;
+  height: 50px;
+  padding: 16px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  box-shadow: var(--box-shadow);
+  transition: all ease-in-out 0.2s;
+}
+
+button:hover {
+  background-color: #444cf7;
+  color: white;
+}
+
+button:disabled {
+  pointer-events: none;
+  background-color: #999999;
+}
+
+#timer {
+  font-weight: 300;
+  font-size: 100px;
+  color: #999999;
+  margin-top: 8px;
+}

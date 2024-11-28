@@ -16,6 +16,16 @@ button {
   border: none;
   cursor: pointer;
   box-shadow: var(--box-shadow);
+  transition: all ease-in-out 0.2s;
+}
+
+button:hover {
+  background-color: #444cf7;
+  color: white;
+}
+
+button:disabled {
+  pointer-events: none;
 }
 
 .container {

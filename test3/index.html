@@ -20,7 +20,6 @@
       const startButton = document.querySelector('#startButton');
       const timerDisplay = document.querySelector('#timer');
 
-      // init data
       const total = 16;
       const emojis = ['😄', '🐶', '🌸', '⭐', '🍎', '🎵', '🚗', '🎲'];
       let shuffled = [];
@@ -31,7 +30,6 @@
       let elapsedSeconds = 0;
       let isStart = true;
 
-      // 카드를 랜덤으로 섞는 함수
       function shuffle() {
         const emojiCopy = emojis.concat(emojis);
         for (let i = emojiCopy.length - 1; i > 0; i--) {
@@ -44,7 +42,6 @@
         shuffled = emojiCopy;
       }
 
-      // 카드 생성 함수
       function createCard(i) {
         const card = document.createElement('div');
         card.className = 'card';
@@ -59,7 +56,6 @@
         return card;
       }
 
-      // 카드를 클릭했을 때 함수
       function onClickCard(event) {
         if (!clickable) return;
 
