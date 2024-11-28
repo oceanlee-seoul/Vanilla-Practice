@@ -66,7 +66,7 @@ mockData.forEach((data) => {
   };
 });
 
-const images = document.querySelectorAll('.imgWrapper img');
+const images = document.querySelectorAll('.img-wrapper img');
 images.forEach((image) => {
   image.addEventListener('click', () => {
     image.classList.toggle('clicked');
@@ -74,11 +74,11 @@ images.forEach((image) => {
 });
 
 const checkboxes = document.querySelectorAll(
-  '.imgWrapper input[type="checkbox"]'
+  '.img-wrapper input[type="checkbox"]'
 );
 checkboxes.forEach((checkbox) => {
   checkbox.addEventListener('change', (event) => {
-    const img = event.target.closest('.imgWrapper').querySelector('img');
+    const img = event.target.closest('.img-wrapper').querySelector('img');
     if (event.target.checked) {
       img.classList.add('checked');
     } else {
