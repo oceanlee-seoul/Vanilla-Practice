@@ -8,24 +8,25 @@ body {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 24px;
+  margin-top: 50px;
   padding: 20px;
 }
 
-.card {
+.profile-card {
   height: 100%;
   box-shadow: var(--box-shadow);
   border-radius: 8px;
   overflow: hidden;
 }
 
-.imgWrapper {
+.img-wrapper {
   position: relative;
   padding-bottom: 56.25%;
   overflow: hidden;
   border-radius: 8px;
 }
 
-.imgWrapper img {
+.img-wrapper img {
   position: absolute;
   top: 0;
   left: 0;
@@ -36,19 +37,19 @@ body {
   transition: transform 0.3s ease;
   cursor: pointer;
 }
-.imgWrapper img:hover {
+.img-wrapper img:hover {
   transform: scale(1.1);
 }
 
-.imgWrapper img.checked {
+.img-wrapper img.checked {
   filter: none;
 }
 
-.imgWrapper img.clicked {
+.img-wrapper img.clicked {
   transform: scale(2);
 }
 
-.imgWrapper input[type='checkbox'] {
+.img-wrapper input[type='checkbox'] {
   position: absolute;
   right: 0;
   bottom: 0;
@@ -57,12 +58,13 @@ body {
   cursor: pointer;
 }
 
-.textWrapper {
+.text-wrapper {
   padding: 16px;
   background-color: white;
 }
 
-.textWrapper h2 {
+.text-wrapper h2 {
+  font-size: 30px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -70,7 +72,7 @@ body {
   color: var(--primary-color);
 }
 
-.textWrapper p {
+.text-wrapper p {
   color: #999999;
   overflow: hidden;
   text-overflow: ellipsis;

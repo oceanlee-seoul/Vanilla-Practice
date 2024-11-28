@@ -1,0 +1,55 @@
+@import url('./variables.css');
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: var(--background-color);
+}
+
+.title {
+  margin-top: 20px;
+  text-align: center;
+  font-weight: 300;
+  font-size: 50px;
+}
+
+.accent {
+  font-weight: bold;
+  font-size: 70px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 800px;
+  width: 80%;
+  padding: 20px;
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: var(--box-shadow);
+}
+
+.link-wrapper {
+  margin: 10px 0 10px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.link {
+  color: var(--primary-color);
+  padding: 10px;
+  border-radius: 10px;
+  text-decoration: none;
+  text-wrap: nowrap;
+  transition: all ease 0.1s;
+}
+
+.link:hover {
+  background-color: var(--primary-color);
+  color: white;
+}

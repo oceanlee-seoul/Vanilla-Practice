@@ -9,7 +9,7 @@ body {
   background-color: var(--background-color);
 }
 
-.btnWrapper {
+.btn-wrapper {
   margin-bottom: 20px;
 }
 
@@ -19,6 +19,7 @@ body {
   justify-content: center;
   align-items: center;
   max-width: 800px;
+  min-width: 296px;
   width: 80%;
   background-color: white;
   border-radius: 20px;

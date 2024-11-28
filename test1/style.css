@@ -1,4 +1,4 @@
-@import url('../global.css');
+@import url('../variables.css');
 
 body {
   background-color: var(--background-color);
@@ -7,11 +7,10 @@ body {
 .container {
   display: flex;
   gap: 10px;
+  margin-top: 50px;
+  padding: 20px;
 }
-button {
-  border: none;
-  background: transparent;
-}
+
 .dropdown {
   flex: 1;
   display: flex;
@@ -20,37 +19,40 @@ button {
   max-width: 350px;
 }
 .dropdown-btn {
+  background-color: white;
   border: 1px solid black;
   box-shadow: var(--box-shadow);
   border-radius: 5px;
   height: 35px;
   cursor: pointer;
 }
-.wrapper {
+.dropdown-wrapper {
+  display: none;
   position: absolute;
   top: 45px;
-  display: none;
-  flex-direction: column;
   width: 100%;
   max-width: 350px;
   border: 1px solid black;
   border-radius: 5px;
-  gap: 5px;
   box-shadow: var(--box-shadow);
 }
 .open {
   display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
-.item {
+.dropdown-item {
+  background-color: transparent;
+  border: none;
   cursor: pointer;
   margin: 5px;
   padding: 5px;
   text-align: left;
   border-radius: 5px;
 }
-.item:hover {
+.dropdown-item:hover {
   background-color: rgb(0, 0, 0, 0.2);
 }
-.item:focus {
+.dropdown-item:focus {
   background-color: rgb(0, 0, 0, 0.2);
 }

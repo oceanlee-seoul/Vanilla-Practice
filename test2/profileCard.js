@@ -5,7 +5,7 @@ const mockData = [
     userName: 'johnDoe',
   },
   {
-    title: 'Jane Smith',
+    title: 'Jane Smith long Name long Name',
     text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor nisl eu velit suscipit, id interdum dui interdum.',
     userName: 'janeSmith',
   },
@@ -24,10 +24,10 @@ const cardContainer = document.getElementById('cardContainer');
 
 mockData.forEach((data) => {
   const cardElement = document.createElement('div');
-  cardElement.classList.add('card');
+  cardElement.classList.add('profile-card');
 
   const imgWrapper = document.createElement('div');
-  imgWrapper.classList.add('imgWrapper');
+  imgWrapper.classList.add('img-wrapper');
 
   const img = document.createElement('img');
   img.src = './assets/empty.png';
@@ -39,7 +39,7 @@ mockData.forEach((data) => {
   imgWrapper.appendChild(checkbox);
 
   const textWrapper = document.createElement('div');
-  textWrapper.classList.add('textWrapper');
+  textWrapper.classList.add('text-wrapper');
 
   const title = document.createElement('h2');
   title.textContent = data.title;
@@ -54,20 +54,18 @@ mockData.forEach((data) => {
 
   cardContainer.appendChild(cardElement);
 
-  // 이미지 로드 후 프로필 이미지로 교체
   const profileImage = new Image();
   const profileImageUrl = data.userName
-    ? `https://avatar.iran.liara.run/public/boy?username=${data.userName}` // userName이 있으면 프로필 이미지 URL 설정
+    ? `https://avatar.iran.liara.run/public/boy?username=${data.userName}`
     : './assets/empty.png';
   profileImage.src = profileImageUrl;
   profileImage.alt = `${data.userName}의 프로필 이미지`;
 
   profileImage.onload = () => {
-    img.src = profileImage.src; // 이미지 로딩 완료되면 프로필 이미지로 교체
+    img.src = profileImage.src;
   };
 });
 
-// 클릭 시 이미지 확대/축소 기능
 const images = document.querySelectorAll('.imgWrapper img');
 images.forEach((image) => {
   image.addEventListener('click', () => {
@@ -75,7 +73,6 @@ images.forEach((image) => {
   });
 });
 
-// 체크박스 변경 시 이미지 상태 변경
 const checkboxes = document.querySelectorAll(
   '.imgWrapper input[type="checkbox"]'
 );

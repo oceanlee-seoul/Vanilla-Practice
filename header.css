@@ -1,0 +1,63 @@
+@import url('./variables.css');
+
+.gnb {
+  position: fixed;
+  z-index: 99;
+  top: 0;
+  left: 0;
+  width: 100%;
+  margin: 0;
+  height: 50px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: var(--box-shadow);
+  text-wrap: nowrap;
+}
+
+.gnb a {
+  color: var(--primary-color);
+  padding: 10px;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: all ease 0.1s;
+}
+
+.gnb a:hover {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.gnb a.current-page {
+  background-color: var(--primary-color);
+  color: white;
+  pointer-events: none;
+}
+
+.gnb .gnb-left {
+  padding-left: 10px;
+}
+
+.gnb .gnb-right {
+  margin: 30px 0 30px 0;
+  padding-right: 10px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+@media screen and (max-width: 480px) {
+  .gnb {
+    font-size: 14px;
+  }
+
+  .gnb a {
+    padding: 5px;
+  }
+
+  .gnb .gnb-right {
+    margin: 10px 0 10px 0;
+    gap: 5px;
+  }
+}

@@ -1,12 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dropdown</title>
+    <title>Dropdown - onflou Development Challenge</title>
+    <link rel="stylesheet" href="../reset.css" />
+    <link rel="stylesheet" href="../header.css" />
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
+    <header class="gnb">
+      <div class="gnb-left"><a href="../index.html">메인</a></div>
+      <div class="gnb-right">
+        <a class="current-page" href="../test1/index.html">1번 문제</a> |
+        <a href="../test2/index.html">2번 문제</a> |
+        <a href="../test3/index.html">3번 문제</a> |
+        <a href="../test4/index.html">4번 문제</a>
+      </div>
+    </header>
     <div class="container">
       <div class="dropdown">
         <button
@@ -17,11 +28,11 @@
         >
           아이템을 선택해 주세요.
         </button>
-        <div id="dropdown-menu-1" class="wrapper" role="menu">
-          <button class="item" role="menuitem">item 1</button>
-          <button class="item" role="menuitem">item 2</button>
-          <button class="item" role="menuitem">item 3</button>
-          <button class="item" role="menuitem">item 4</button>
+        <div id="dropdown-menu-1" class="dropdown-wrapper" role="menu">
+          <button class="dropdown-item" role="menuitem">item 1</button>
+          <button class="dropdown-item" role="menuitem">item 2</button>
+          <button class="dropdown-item" role="menuitem">item 3</button>
+          <button class="dropdown-item" role="menuitem">item 4</button>
         </div>
       </div>
 
@@ -34,11 +45,11 @@
         >
           아이템을 선택해 주세요.
         </button>
-        <div id="dropdown-menu-2" class="wrapper">
-          <button class="item" role="menuitem">item A</button>
-          <button class="item" role="menuitem">item B</button>
-          <button class="item" role="menuitem">item C</button>
-          <button class="item" role="menuitem">item D</button>
+        <div id="dropdown-menu-2" class="dropdown-wrapper" role="menu">
+          <button class="dropdown-item" role="menuitem">item A</button>
+          <button class="dropdown-item" role="menuitem">item B</button>
+          <button class="dropdown-item" role="menuitem">item C</button>
+          <button class="dropdown-item" role="menuitem">item D</button>
         </div>
       </div>
     </div>
