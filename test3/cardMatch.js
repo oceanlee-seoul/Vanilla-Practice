@@ -1,6 +1,7 @@
 const wrapper = document.querySelector('#cardWrapper');
 const startButton = document.querySelector('#startButton');
 const timerDisplay = document.querySelector('#timer');
+const roundDisplay = document.querySelector('#round');
 
 const total = 16;
 const emojis = ['😄', '🐶', '🌸', '⭐', '🍎', '🎵', '🚗', '🎲'];
@@ -10,7 +11,12 @@ let completed = [];
 let clickable;
 let timer;
 let elapsedSeconds = 0;
+let round = 1;
 let isStart = true;
+
+function updateRoundDisplay() {
+  roundDisplay.textContent = `Round: ${round}`;
+}
 
 function shuffle() {
   const emojiCopy = emojis.concat(emojis);
@@ -90,6 +96,8 @@ function unflipCards() {
 }
 
 function resetGame() {
+  round += 1;
+  updateRoundDisplay();
   resetTimer();
   clicked = [];
   completed = [];
@@ -127,9 +135,12 @@ async function startGame() {
     document.querySelectorAll('.card').forEach((card) => {
       card.classList.remove('flipped');
     });
+    updateRoundDisplay();
+
     clickable = true;
     startButton.disabled = false;
     startButton.textContent = '다시하기';
+
     startTimer();
   }, 3000);
 }
@@ -153,6 +164,7 @@ function startTimer() {
 }
 
 cardSetting();
+updateRoundDisplay();
 
 startButton.addEventListener('click', () => {
   if (isStart) {

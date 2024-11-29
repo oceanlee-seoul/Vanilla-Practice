@@ -63,14 +63,15 @@ mockData.forEach((data) => {
 
   profileImage.onload = () => {
     img.src = profileImage.src;
-  };
-});
 
-const images = document.querySelectorAll('.img-wrapper img');
-images.forEach((image) => {
-  image.addEventListener('click', () => {
-    image.classList.toggle('clicked');
-  });
+    if (!img.src.includes('empty.png')) {
+      img.addEventListener('click', () => {
+        img.classList.toggle('clicked');
+      });
+    } else {
+      img.classList.add('empty');
+    }
+  };
 });
 
 const checkboxes = document.querySelectorAll(
@@ -83,6 +84,9 @@ checkboxes.forEach((checkbox) => {
       img.classList.add('checked');
     } else {
       img.classList.remove('checked');
+      if (img.classList.contains('clicked')) {
+        img.classList.remove('clicked');
+      }
     }
   });
 });

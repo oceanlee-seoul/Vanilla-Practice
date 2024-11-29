@@ -36,16 +36,24 @@ body {
   filter: blur(5px);
   transition: transform 0.3s ease;
   cursor: pointer;
-}
-.img-wrapper img:hover {
-  transform: scale(1.1);
+  pointer-events: none;
 }
 
 .img-wrapper img.checked {
   filter: none;
+  pointer-events: all;
 }
 
-.img-wrapper img.clicked {
+.img-wrapper img.empty {
+  transform: none;
+  pointer-events: none;
+}
+
+.img-wrapper img.checked:hover {
+  transform: scale(1.1);
+}
+
+.img-wrapper img.clicked.checked {
   transform: scale(2);
 }
 
